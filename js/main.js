@@ -1,5 +1,9 @@
 /*----- constants -----*/
-
+const COLORS = {
+  0: 'white',
+  1: 'red',
+  -1: 'black'
+}
 
 /*----- app's state (variables) -----*/
 let board; // will be a row*column-type nested array
@@ -35,7 +39,7 @@ function render() {
   board.forEach(function(colArr, colIdx) {
     colArr.forEach(function(cellVal, rowIdx) {
       const cellEl = document.getElementById('c${colIdx}r${rowIdx}');
-      console.log(cellEl, cellVal)
+      cellEl.style.backgroundColor = COLORS[cellVal];
     })
   });
 }
