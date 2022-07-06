@@ -37,7 +37,7 @@ function init() {
 //hide/show the markers; hide if no 0's exist in the column
 function renderMarkers() {
   markerEls.forEach(function(markerEl, colIdx){
-    markerEl.style.
+    markerEl.style.visibility = board[colIdx].includes(0) ? 'visible' : 'hidden';
   })
 }
 
@@ -57,9 +57,9 @@ function handleDrop(event) {
   const colIdx = markerEls.indexOf(event.target);
   if(colIdx === -1) return;
   const colArr = board[colIdx];
-  if (!colArr.includes(0)) return;
   const rowIdx = colArr.indexOf(0);
   colArr[rowIdx] = turn;
   turn = turn * -1
   render();
-}
+} 
+ 
