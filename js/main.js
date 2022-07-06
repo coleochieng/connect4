@@ -34,6 +34,13 @@ function init() {
  render(); 
 }
 
+//hide/show the markers; hide if no 0's exist in the column
+function renderMarkers() {
+  markerEls.forEach(function(markerEl, colIdx){
+    markerEl.style.
+  })
+}
+
 function render() {
   // iterate over column arrays
   board.forEach(function(colArr, colIdx) {
@@ -42,6 +49,7 @@ function render() {
       cellEl.style.backgroundColor = COLORS[cellVal];
     })
   });
+  renderMarkers();
 }
 
 // update all impacted state then call render()
