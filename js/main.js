@@ -49,7 +49,9 @@ function handleDrop(event) {
   const colIdx = markerEls.indexOf(event.target);
   if(colIdx === -1) return;
   const colArr = board[colIdx];
-
-
+  if (!colArr.includes(0)) return;
+  const rowIdx = colArr.indexOf(0);
+  colArr[rowIdx] = turn;
+  turn = turn * -1
   render();
 }
