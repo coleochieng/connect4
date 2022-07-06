@@ -1,8 +1,8 @@
 /*----- constants -----*/
 const COLORS = {
-  0: 'white',
-  1: 'red',
-  -1: 'black'
+  "0": 'white',
+  "1": 'blue',
+  "-1": 'yellow'
 }
 
 /*----- app's state (variables) -----*/
