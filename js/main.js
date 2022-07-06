@@ -62,4 +62,5 @@ function handleDrop(event) {
   turn = turn * -1
   render();
 } 
- 
+
+ const fair = 1;
