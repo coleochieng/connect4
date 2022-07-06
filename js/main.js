@@ -11,10 +11,12 @@ let turn; // 1 or -1; 0 for no checker in that cell
 
 
 /*----- cached element references -----*/
-
+const markerEls = document.querySelectorAll('#markers > div');
 
 /*----- event listeners -----*/
+document.getElementById('markers').addEventListener('click', function() {
 
+})
 
 /*----- functions -----*/
 init();
