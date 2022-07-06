@@ -80,20 +80,25 @@ function handleDrop(event) {
 }
 
  function checkHorizWin(colIdx, rowIdx, player) {
-  const rowArr = board[rowIdx]
+  let idx = colIdx + 1;
   let count = 1;
-  // We can use/modify rowIdx because we won't need
-  // to access it's original value anymore
-  colIdx--;
+  
   // Count until no longer the same 'player'
-  while(colArr[rowIdx] === player && rowIdx >= 0) {
+  while(idx < board.length && board[idx][rowIdx] === player) {
       count++;
-      rowIdx--;
+      idx++;
+  }
+  idx = colIdx - 1;
+  while(idx >= 0 && board[idx][rowIdx] === player) {
+      count++;
+      idx--;
   }
   return count === 4 ? player : null;
 }
 
 function checkWin(colIdx, rowIdx) {
   const player = board[colIdx][rowIdx];
-  return checkVertWin(colIdx, rowIdx, player);
+  return checkVertWin(colIdx, rowIdx, player) ||
+    checkHorizWin(colIdx, rowIdx, player);
+  
 }
