@@ -26,6 +26,16 @@ function init() {
    [0, 0, 0, 0, 0, 0], // column 5 
    [0, 0, 0, 0, 0, 0], // column 6
  ]; 
-  turn = 1;
- // render(); 
+ turn = 1;
+ render(); 
+}
+
+function render() {
+  // iterate over column arrays
+  board.forEach(function(colArr, colIdx) {
+    colArr.forEach(function(cellVal, rowIdx) {
+      const cellEl = document.getElementById('c${colIdx}r${rowIdx}');
+      console.log(cellEl, cellVal)
+    })
+  });
 }
