@@ -11,12 +11,10 @@ let turn; // 1 or -1; 0 for no checker in that cell
 
 
 /*----- cached element references -----*/
-const markerEls = document.querySelectorAll('#markers > div');
+const markerEls = [...document.querySelectorAll('#markers > div')];
 
 /*----- event listeners -----*/
-document.getElementById('markers').addEventListener('click', function() {
-
-})
+document.getElementById('markers').addEventListener('click', handleDrop);
 
 /*----- functions -----*/
 init();
@@ -44,4 +42,14 @@ function render() {
       cellEl.style.backgroundColor = COLORS[cellVal];
     })
   });
+}
+
+// update all impacted state then call render()
+function handleDrop(event) {
+  const colIdx = markerEls.indexOf(event.target);
+  if(colIdx === -1) return;
+  const colArr = board[colIdx];
+
+
+  render();
 }
