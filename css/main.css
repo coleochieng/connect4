@@ -14,7 +14,7 @@
   
   #markers {
     display: grid;
-    grid-template-columns: repeat(5, 16vmin);
+    grid-template-columns: repeat(7, 10vmin);
     gap: 2vmin;
     margin-top: 2vmin;
   }
@@ -35,8 +35,8 @@
   
   #board {
     display: grid;
-    grid-template-columns: repeat(7, 16vmin);
-    grid-template-rows: repeat(6, 16vmin);
+    grid-template-columns: repeat(7, 10vmin);
+    grid-template-rows: repeat(6, 10vmin);
     gap: 2vmin;
     margin-top: -3vmin;
   }

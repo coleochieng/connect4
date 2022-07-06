@@ -8,6 +8,7 @@ const COLORS = {
 /*----- app's state (variables) -----*/
 let board; // will be a row*column-type nested array
 let turn; // 1 or -1; 0 for no checker in that cell
+let winner;
 
 
 /*----- cached element references -----*/
@@ -45,7 +46,7 @@ function render() {
   // iterate over column arrays
   board.forEach(function(colArr, colIdx) {
     colArr.forEach(function(cellVal, rowIdx) {
-      const cellEl = document.getElementById('c${colIdx}r${rowIdx}');
+      const cellEl = document.getElementById(`c${colIdx}r${rowIdx}`);
       cellEl.style.backgroundColor = COLORS[cellVal];
     })
   });
@@ -59,8 +60,40 @@ function handleDrop(event) {
   const colArr = board[colIdx];
   const rowIdx = colArr.indexOf(0);
   colArr[rowIdx] = turn;
+  winner = checkWin(colIdx, rowIdx);
   turn = turn * -1
   render();
 } 
 
- const fair = 1;
+ function checkVertWin(colIdx, rowIdx, player) {
+  const colArr = board[colIdx];
+  let count = 1;
+  // We can use/modify rowIdx because we won't need
+  // to access it's original value anymore
+  rowIdx--;
+  // Count until no longer the same 'player'
+  while(colArr[rowIdx] === player && rowIdx >= 0) {
+      count++;
+      rowIdx--;
+  }
+  return count === 4 ? player : null;
+}
+
+ function checkHorizWin(colIdx, rowIdx, player) {
+  const rowArr = board[rowIdx]
+  let count = 1;
+  // We can use/modify rowIdx because we won't need
+  // to access it's original value anymore
+  colIdx--;
+  // Count until no longer the same 'player'
+  while(colArr[rowIdx] === player && rowIdx >= 0) {
+      count++;
+      rowIdx--;
+  }
+  return count === 4 ? player : null;
+}
+
+function checkWin(colIdx, rowIdx) {
+  const player = board[colIdx][rowIdx];
+  return checkVertWin(colIdx, rowIdx, player);
+}
