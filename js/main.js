@@ -99,7 +99,7 @@ function handleDrop(event) {
 function checkWin(colIdx, rowIdx) {
   const player = board[colIdx][rowIdx];
   return checkVertWin(colIdx, rowIdx, player) ||
-    checkHorizWin(colIdx, rowIdx, player); || checkDiagWin(colIdx, rowIdx, player);
+    checkHorizWin(colIdx, rowIdx, player) || checkDiagWin(colIdx, rowIdx, player);
   
 }
 
