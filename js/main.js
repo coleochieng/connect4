@@ -104,18 +104,39 @@ function checkWin(colIdx, rowIdx) {
 }
 
 
-//2 functions; check diagonal left and check diagonal right; maybe make nested function
 
-}
-
-
-function checkRightDiagWin(colIdx, rowIdx) {
+function checkDiagWin(colIdx, rowIdx, player) {
   const player = board[colIdx][rowIdx];
   let count = 1;
-  // think of climbing up an x,y graph [(x+1),(y+1)] except the board is y,x
+  // think of climbing up an x,y graph [(x+1),(y+1)] except the board is y,x in UI/UX
+  //right diag
   let idx1 = colIdx + 1;
   let idx2 = rowIdx + 1;
-  while (idx)
-
-
+  while (idx1 < board.length && idx2 < board[0].length && board[idx1][idx2] === player) {
+    count++;
+    idx1++;
+    idx2++;
+  }
+  idx1 = colIdx - 1;
+  idx2 = rowIdx + 1;
+  while (idx1 < board.length && idx2 < board[0].length && board[idx1][idx2] === player) {
+    count++;
+    idx1--;
+    idx2++;
+  }
+  //left diag
+  idx1 = colIdx + 1;
+  idx2 = rowIdx - 1;
+  while (idx1 < board.length && idx2 < board[0].length && board[idx1][idx2] === player) {
+    count++;
+    idx1++;
+    idx2--;
+  }
+  idx1 = colIdx - 1;
+  idx2 = rowIdx + 1;
+  while (idx1 < board.length && idx2 < board[0].length && board[idx1][idx2] === player) {
+    count++;
+    idx1--;
+    idx2++;
+  }
 }
