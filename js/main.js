@@ -99,6 +99,23 @@ function handleDrop(event) {
 function checkWin(colIdx, rowIdx) {
   const player = board[colIdx][rowIdx];
   return checkVertWin(colIdx, rowIdx, player) ||
-    checkHorizWin(colIdx, rowIdx, player);
+    checkHorizWin(colIdx, rowIdx, player); || checkDiagWin(colIdx, rowIdx, player);
   
+}
+
+
+//2 functions; check diagonal left and check diagonal right; maybe make nested function
+
+}
+
+
+function checkRightDiagWin(colIdx, rowIdx) {
+  const player = board[colIdx][rowIdx];
+  let count = 1;
+  // think of climbing up an x,y graph [(x+1),(y+1)] except the board is y,x
+  let idx1 = colIdx + 1;
+  let idx2 = rowIdx + 1;
+  while (idx)
+
+
 }
