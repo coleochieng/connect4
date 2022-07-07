@@ -99,14 +99,13 @@ function handleDrop(event) {
 function checkWin(colIdx, rowIdx) {
   const player = board[colIdx][rowIdx];
   return checkVertWin(colIdx, rowIdx, player) ||
-    checkHorizWin(colIdx, rowIdx, player) || checkDiagWin(colIdx, rowIdx, player);
+    checkHorizWin(colIdx, rowIdx, player) || checkRightDiagWin(colIdx, rowIdx, player) || checkLeftDiagWin(colIdx, rowIdx, player);
   
 }
 
 
 
-function checkDiagWin(colIdx, rowIdx, player) {
-  const player = board[colIdx][rowIdx];
+function checkRightDiagWin(colIdx, rowIdx, player) {
   let count = 1;
   // think of climbing up an x,y graph [(x+1),(y+1)] except the board is y,x in UI/UX
   //right diag
@@ -119,24 +118,28 @@ function checkDiagWin(colIdx, rowIdx, player) {
   }
   idx1 = colIdx - 1;
   idx2 = rowIdx + 1;
-  while (idx1 < board.length && idx2 < board[0].length && board[idx1][idx2] === player) {
+  while (idx1 >= 0 && idx2 >= 0 && board[idx1][idx2] === player) {
     count++;
     idx1--;
-    idx2++;
+    idx2--;
   }
-  //left diag
+  return count === 4 ? player : null;
+}
+
+function checkLeftDiagWin(colIdx, rowIdx, player) {
   idx1 = colIdx + 1;
   idx2 = rowIdx - 1;
-  while (idx1 < board.length && idx2 < board[0].length && board[idx1][idx2] === player) {
+  while (idx1 < board.length && idx2 >= 0 && board[idx1][idx2] === player) {
     count++;
     idx1++;
     idx2--;
   }
   idx1 = colIdx - 1;
   idx2 = rowIdx + 1;
-  while (idx1 < board.length && idx2 < board[0].length && board[idx1][idx2] === player) {
+  while (idx1 >= 0 && idx2 < board[0].length && board[idx1][idx2] === player) {
     count++;
     idx1--;
     idx2++;
   }
+  return count === 4 ? player : null;
 }
