@@ -1,8 +1,4 @@
 
-// 5) Handle a player clicking a square
-
-// 6) Handle a player clicking the replay button
-
 /*-------------------------------------PSEUDOCODE---------------------------------------*/
 // 1) Define required constants
 /*----- constants -----*/
@@ -82,6 +78,7 @@ function renderMessage() {
   }
 }
 
+// 5) Handle a player clicking a square
 // update all impacted state then call render()
 function handleDrop(event) {
   const colIdx = markerEls.indexOf(event.target);
@@ -178,8 +175,25 @@ function checkWin(colIdx, rowIdx) {
       checkLeftDiagWin(colIdx, rowIdx)||
       (board.flat().includes(0) ?null : 'T');
 };
+// 6) Handle a player clicking the replay button
+//[user should press "refresh" button on browser to replay game]
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------------play code for later--------------------------------------------------*/
 // function checkPosDiagWin(colIdx, rowIdx, player)  {
 //   let idx1 = colIdx + 1;
 //   let idx2 = rowIdx + 1;
