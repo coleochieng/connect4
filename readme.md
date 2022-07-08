@@ -3,8 +3,8 @@ This is a modern, minimalist online version of the classic game Connect Four. Mi
 
 # Screenshot
 
-<img src="url to your image on imgur">
-<img src="url to your image on imgur">
+<img src="https://i.imgur.com/31l8fDa.png">
+<img src="https://i.imgur.com/gCgwzYf.png">
 
 # Technologies Used
 
