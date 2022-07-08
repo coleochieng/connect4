@@ -155,3 +155,5 @@ function checkWin(colIdx, rowIdx) {
     checkHorizWin(colIdx, rowIdx, player) || checkRightDiagWin(colIdx, rowIdx, player) || checkLeftDiagWin(colIdx, rowIdx, player);
   
 }
+
+// test
