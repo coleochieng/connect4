@@ -1,18 +1,4 @@
 
-
-// 2) Define required variables used to track the state of the game
-
-// 3) Store elements on the page that will be accessed in code more than once in variables to make code more concise, readable and performant.
-
-// 4) Upon loading the app should:
-// 	4.1) Initialize the state variables
-// 	4.2) Render those values to the page
-// 	4.3) Wait for the user to click a square
-
-// 5) Handle a player clicking a square
-
-// 6) Handle a player clicking the replay button
-
 /*-------------------------------------PSEUDOCODE---------------------------------------*/
 // 1) Define required constants
 /*----- constants -----*/
@@ -22,6 +8,8 @@ const COLORS = {
   "-1": 'yellow'
 }
 
+
+// 2) Define required variables used to track the state of the game
 /*----- app's state (variables) -----*/
 let board; // will be a row*column-type nested array
 let turn; // 1 or -1; 0 for no checker in that cell
@@ -30,13 +18,23 @@ let player;
 let idx1;
 let idx2;
 
-
+// 3) Store elements on the page that will be accessed in code more than once in variables to make code more concise, readable and performant.
 /*----- cached element references -----*/
 const markerEls = [...document.querySelectorAll('#markers > div')];
 const msgEl = document.querySelector("h2");
+const cellEl = document.getElementById(`c${colIdx}r${rowIdx}`);
 
+// 4) Upon loading the app should:
+// 	4.1) Initialize the state variables
+// 	4.2) Render those values to the page
+// 	4.3) Wait for the user to click a marker
+
+// 5) Handle a player clicking a square
 /*----- event listeners -----*/
 document.getElementById('markers').addEventListener('click', handleDrop);
+
+// 6) Handle a player clicking the replay button
+//user should navigate to 
 
 /*----- functions -----*/
 init();
