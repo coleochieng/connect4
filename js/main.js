@@ -10,10 +10,13 @@ let board; // will be a row*column-type nested array
 let turn; // 1 or -1; 0 for no checker in that cell
 let winner;
 let player;
+let idx1;
+let idx2;
 
 
 /*----- cached element references -----*/
 const markerEls = [...document.querySelectorAll('#markers > div')];
+const msgEl = document.querySelector("h2");
 
 /*----- event listeners -----*/
 document.getElementById('markers').addEventListener('click', handleDrop);
@@ -53,6 +56,7 @@ function render() {
     })
   });
   renderMarkers();
+  renderMessage();
 }
 
 function renderMessage() {
@@ -107,12 +111,12 @@ function handleDrop(event) {
 }
 
 
-function checkRightDiagWin(colIdx, rowIdx, player) {
+function checkPosDiagWin(colIdx, rowIdx, player) {
   let count = 1;
   // think of climbing up an x,y graph [(x+1),(y+1)] except the board is y,x in UI/UX
   //right diag
-  let idx1 = colIdx + 1;
-  let idx2 = rowIdx + 1;
+  idx1 = colIdx + 1;
+  idx2 = rowIdx + 1;
   while (idx1 < board.length && idx2 < board[0].length && board[idx1][idx2] === player) {
     count++;
     idx1++;
@@ -128,7 +132,7 @@ function checkRightDiagWin(colIdx, rowIdx, player) {
   return count === 4 ? player : null;
 }
 
-function checkLeftDiagWin(colIdx, rowIdx, player) {
+function checkNegDiagWin(colIdx, rowIdx, player) {
   let count = 1;
   idx1 = colIdx + 1;
   idx2 = rowIdx - 1;
@@ -142,10 +146,19 @@ function checkLeftDiagWin(colIdx, rowIdx, player) {
   while (idx1 >= 0 && idx2 < board[0].length && board[idx1][idx2] === player) {
     count++;
     idx1--;
-    idx2++;
+    idx2--;
   }
   return count === 4 ? player : null;
 }
+
+function checkWin(colIdx, rowIdx) {
+  const player = board[colIdx][rowIdx];
+ return checkVertWin(colIdx, rowIdx, player) ||
+      checkHorzWin(colIdx, rowIdx, player)||
+      //checkDiagWinRight(colIdx, rowIdx, player)||
+      //checkDiagWinLeft(colIdx, rowIdx, player)||
+      (board.flat().includes(0) ?null : 'T');
+};
 
 
 //final check
@@ -156,4 +169,3 @@ function checkWin(colIdx, rowIdx) {
   
 }
 
-// test
