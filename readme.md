@@ -11,13 +11,12 @@ This is a modern, minimalist online version of the classic game Connect Four. Mi
 - JavaScript
 - HTML
 - CSS
-- CardStarter CSS Library
 
 # Getting Started
 
-[Click to Play Connect Four!](your deployment url here)
+Click to Play Connect Four! https://coleochieng.github.io/connect4/
 
 # Next Steps
 
-- Future enhancement one...
-- Future enhancement two... 
+- Utilize CSS so the application can have an aesthetic
+- Start function logic early then work on transcribing into necessary syntax
