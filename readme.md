@@ -6,7 +6,7 @@ This is a modern, minimalist online version of the classic game Connect Four. Mi
 <img src="https://i.imgur.com/31l8fDa.png">
 <img src="https://i.imgur.com/gCgwzYf.png">
 
-# Technologies Used
+# Technologies Used (only 3 this time)
 
 - JavaScript
 - HTML
