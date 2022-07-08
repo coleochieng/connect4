@@ -9,6 +9,7 @@ const COLORS = {
 let board; // will be a row*column-type nested array
 let turn; // 1 or -1; 0 for no checker in that cell
 let winner;
+let player;
 
 
 /*----- cached element references -----*/
@@ -32,7 +33,8 @@ function init() {
    [0, 0, 0, 0, 0, 0], // column 6
  ]; 
  turn = 1;
- render(); 
+ render();
+ renderMarkers(); 
 }
 
 //hide/show the markers; hide if no 0's exist in the column
@@ -53,6 +55,16 @@ function render() {
   renderMarkers();
 }
 
+function renderMessage() {
+  if (winner === 'T') {
+      msgEl.innerHTML = "It's a Tie!!!";
+  } else if (winner === 1 || winner === -1) {
+      msgEl.innerHTML = `<span style=“color:${COLORS[winner]}“>${COLORS[winner].toUpperCase()}</span> Wins!`;
+  } else {
+      msgEl.innerHTML = `<span style=“color:${COLORS[turn]}“>${COLORS[turn].toUpperCase()}</span>'s Turn`;
+  }
+}
+
 // update all impacted state then call render()
 function handleDrop(event) {
   const colIdx = markerEls.indexOf(event.target);
@@ -60,16 +72,16 @@ function handleDrop(event) {
   const colArr = board[colIdx];
   const rowIdx = colArr.indexOf(0);
   colArr[rowIdx] = turn;
-  winner = checkWin(colIdx, rowIdx);
+  winner = checkWin(colIdx, rowIdx, player);
   turn = turn * -1
   render();
 } 
 
+
+//win functions
  function checkVertWin(colIdx, rowIdx, player) {
   const colArr = board[colIdx];
   let count = 1;
-  // We can use/modify rowIdx because we won't need
-  // to access it's original value anymore
   rowIdx--;
   // Count until no longer the same 'player'
   while(colArr[rowIdx] === player && rowIdx >= 0) {
@@ -82,8 +94,6 @@ function handleDrop(event) {
  function checkHorizWin(colIdx, rowIdx, player) {
   let idx = colIdx + 1;
   let count = 1;
-  
-  // Count until no longer the same 'player'
   while(idx < board.length && board[idx][rowIdx] === player) {
       count++;
       idx++;
@@ -95,14 +105,6 @@ function handleDrop(event) {
   }
   return count === 4 ? player : null;
 }
-
-function checkWin(colIdx, rowIdx) {
-  const player = board[colIdx][rowIdx];
-  return checkVertWin(colIdx, rowIdx, player) ||
-    checkHorizWin(colIdx, rowIdx, player) || checkRightDiagWin(colIdx, rowIdx, player) || checkLeftDiagWin(colIdx, rowIdx, player);
-  
-}
-
 
 
 function checkRightDiagWin(colIdx, rowIdx, player) {
@@ -127,6 +129,7 @@ function checkRightDiagWin(colIdx, rowIdx, player) {
 }
 
 function checkLeftDiagWin(colIdx, rowIdx, player) {
+  let count = 1;
   idx1 = colIdx + 1;
   idx2 = rowIdx - 1;
   while (idx1 < board.length && idx2 >= 0 && board[idx1][idx2] === player) {
@@ -142,4 +145,13 @@ function checkLeftDiagWin(colIdx, rowIdx, player) {
     idx2++;
   }
   return count === 4 ? player : null;
+}
+
+
+//final check
+function checkWin(colIdx, rowIdx) {
+  const player = board[colIdx][rowIdx];
+  return checkVertWin(colIdx, rowIdx, player) ||
+    checkHorizWin(colIdx, rowIdx, player) || checkRightDiagWin(colIdx, rowIdx, player) || checkLeftDiagWin(colIdx, rowIdx, player);
+  
 }
