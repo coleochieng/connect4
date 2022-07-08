@@ -147,7 +147,7 @@ function checkRightDiagWin(colIdx, rowIdx) {
       idx1++;
       idx2--;
   }
-  return count >= 4 ? winner = turn * -1 : 0; 
+  return count >= 4 ? winner = turn * 1 : 0; 
 };
   
 function checkLeftDiagWin(colIdx, rowIdx) {
@@ -169,7 +169,7 @@ function checkLeftDiagWin(colIdx, rowIdx) {
       idx1--;
       idx2--;
   }
-  return count >=4 ? winnter = turn * -1 : 0;
+  return count >=4 ? winnter = turn * 1 : 0;
 }
 
 
