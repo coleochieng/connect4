@@ -1,3 +1,20 @@
+
+
+// 2) Define required variables used to track the state of the game
+
+// 3) Store elements on the page that will be accessed in code more than once in variables to make code more concise, readable and performant.
+
+// 4) Upon loading the app should:
+// 	4.1) Initialize the state variables
+// 	4.2) Render those values to the page
+// 	4.3) Wait for the user to click a square
+
+// 5) Handle a player clicking a square
+
+// 6) Handle a player clicking the replay button
+
+/*-------------------------------------PSEUDOCODE---------------------------------------*/
+// 1) Define required constants
 /*----- constants -----*/
 const COLORS = {
   "0": 'white',
@@ -110,62 +127,131 @@ function handleDrop(event) {
   return count === 4 ? player : null;
 }
 
-
-function checkPosDiagWin(colIdx, rowIdx, player) {
+function checkRightDiagWin(colIdx, rowIdx) {
+  const colArr = board[colIdx][rowIdx];
   let count = 1;
-  // think of climbing up an x,y graph [(x+1),(y+1)] except the board is y,x in UI/UX
-  //right diag
-  idx1 = colIdx + 1;
-  idx2 = rowIdx + 1;
-  while (idx1 < board.length && idx2 < board[0].length && board[idx1][idx2] === player) {
-    count++;
-    idx1++;
-    idx2++;
+  let idx1 = colIdx - 1;
+  let idx2 = rowIdx + 1;
+  while (idx1 >= 0 && idx2 < board[0].length && board[idx1][idx2] === colArr) {
+      
+      count++;
+      idx1--;
+      idx2++;
   }
-  idx1 = colIdx - 1;
-  idx2 = rowIdx + 1;
-  while (idx1 >= 0 && idx2 >= 0 && board[idx1][idx2] === player) {
-    count++;
-    idx1--;
-    idx2--;
-  }
-  return count === 4 ? player : null;
-}
 
-function checkNegDiagWin(colIdx, rowIdx, player) {
-  let count = 1;
   idx1 = colIdx + 1;
   idx2 = rowIdx - 1;
-  while (idx1 < board.length && idx2 >= 0 && board[idx1][idx2] === player) {
-    count++;
-    idx1++;
-    idx2--;
+  while (idx1 < board.length && idx2 >= 0 && board[idx1][idx2] === colArr) {
+     
+      count++;
+      idx1++;
+      idx2--;
   }
+  return count >= 4 ? winner = turn * -1 : 0; 
+};
+  
+function checkLeftDiagWin(colIdx, rowIdx) {
+  const colArr = board[colIdx][rowIdx];
+  let count = 1;
+  let idx1 = colIdx + 1;
+  let idx2 = rowIdx +1;
+
+  while (idx1 < board.length && idx2 > board[0].length && board[idx1][idx2] === colArr) {
+  count++;
+  idx1++;
+  idx2++;
+
+  } 
   idx1 = colIdx - 1;
-  idx2 = rowIdx + 1;
-  while (idx1 >= 0 && idx2 < board[0].length && board[idx1][idx2] === player) {
-    count++;
-    idx1--;
-    idx2--;
+  idx2 = rowIdx - 1;
+  while (idx1 >= 0 && idx2 >= 0 && board[idx1][idx2] === colArr) {
+      count++;
+      idx1--;
+      idx2--;
   }
-  return count === 4 ? player : null;
+  return count >=4 ? winnter = turn * -1 : 0;
 }
+
+
 
 function checkWin(colIdx, rowIdx) {
   const player = board[colIdx][rowIdx];
  return checkVertWin(colIdx, rowIdx, player) ||
-      checkHorzWin(colIdx, rowIdx, player)||
-      //checkDiagWinRight(colIdx, rowIdx, player)||
-      //checkDiagWinLeft(colIdx, rowIdx, player)||
+      checkHorizWin(colIdx, rowIdx, player)||
+      checkRightDiagWin(colIdx, rowIdx)||
+      checkLeftDiagWin(colIdx, rowIdx)||
       (board.flat().includes(0) ?null : 'T');
 };
 
 
+// function checkPosDiagWin(colIdx, rowIdx, player)  {
+//   let idx1 = colIdx + 1;
+//   let idx2 = rowIdx + 1;
+//   let count = 1;
+//   while(idx1 < board.length && idx2 < board[idx][rowIdx] && board[idx][rowIdx] === player) {
+//       count++;
+//       idx1++;
+//       idx2++;
+//   }
+//   let idx1 = colIdx - 1;
+//   let idx2 = rowIdx - 1;
+//   let count = 1;
+//   while(idx >= 0 && board[idx][rowIdx] === player) {
+//       count++;
+//       idx1--;
+//       idx2--;
+//   }
+//   return count === 4 ? player : null;
+// }
+
+
+// function checkPosDiagWin(colIdx, rowIdx, player) {
+//   let count = 1;
+//   // think of climbing up an x,y graph [(x+1),(y+1)] except the board is y,x in UI/UX
+//   //right diag
+//   let idx1 = colIdx + 1;
+//   let idx2 = rowIdx + 1;
+//   while (idx1 < board.length && idx2 < board[0].length && board[idx1][idx2] === player) {
+//     count++;
+//     idx1++;
+//     idx2++;
+//   }
+//   idx1 = colIdx - 1;
+//   idx2 = rowIdx + 1;
+//   while (idx1 >= 0 && idx2 >= 0 && board[idx1][idx2] === player) {
+//     count++;
+//     idx1--;
+//     idx2--;
+//   }
+//   return count === 4 ? player : null;
+// }
+
+// function checkNegDiagWin(colIdx, rowIdx, player) {
+//   let count = 1;
+//   idx1 = colIdx + 1;
+//   idx2 = rowIdx - 1;
+//   while (idx1 < board.length && idx2 >= 0 && board[idx1][idx2] === player) {
+//     count++;
+//     idx1++;
+//     idx2--;
+//   }
+//   idx1 = colIdx - 1;
+//   idx2 = rowIdx + 1;
+//   while (idx1 >= 0 && idx2 < board[0].length && board[idx1][idx2] === player) {
+//     count++;
+//     idx1--;
+//     idx2--;
+//   }
+//   return count === 4 ? player : null;
+// }
+
+
+
 //final check
-function checkWin(colIdx, rowIdx) {
-  const player = board[colIdx][rowIdx];
-  return checkVertWin(colIdx, rowIdx, player) ||
-    checkHorizWin(colIdx, rowIdx, player) || checkRightDiagWin(colIdx, rowIdx, player) || checkLeftDiagWin(colIdx, rowIdx, player);
+// function checkWin(colIdx, rowIdx) {
+//   const player = board[colIdx][rowIdx];
+//   return checkVertWin(colIdx, rowIdx, player) ||
+//     checkHorizWin(colIdx, rowIdx, player) || checkRightDiagWin(colIdx, rowIdx, player) || checkLeftDiagWin(colIdx, rowIdx, player);
   
-}
+// }
 
