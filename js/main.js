@@ -82,7 +82,7 @@ function renderMessage() {
 // update all impacted state then call render()
 function handleDrop(event) {
   const colIdx = markerEls.indexOf(event.target);
-  if(colIdx === -1) return;
+  if(colIdx === -1 || winner) return;
   const colArr = board[colIdx];
   const rowIdx = colArr.indexOf(0);
   colArr[rowIdx] = turn;
