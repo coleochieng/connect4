@@ -1,5 +1,5 @@
 # <Connect Four>
-This is a modern, minimalist online version of the classic game Connect Four. Milton Bradley made the game mainstream in 1974 when he instroduced the plastic-set version of the game. This is the virtual version of the game many know and love. See if you can connect four! description of your game. 
+This is a modern, minimalist online version of the classic game Connect Four. Milton Bradley made the game mainstream in 1974 when he instroduced the plastic-set version of the game. This is the virtual version of the game many know and love. See if you can connect four! description of your game. Good luck!
 
 # Screenshot
 
