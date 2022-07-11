@@ -1,5 +1,6 @@
 1) Required constants
     1.1) Define a colors object with 3 key-value pairs that represent an empty space, player 1, and player -1.
+    1.2) Define a replay button constant so user can replay the game witout refreshing the entire page.
 
 2) State variables used to track the state of the game
     2.1) Use a board array to represent the board for the game Connect Four.

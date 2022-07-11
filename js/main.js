@@ -1,5 +1,4 @@
 
-/*-------------------------------------PSEUDOCODE---------------------------------------*/
 // 1) Define required constants
 /*----- constants -----*/
 const COLORS = {
@@ -7,6 +6,7 @@ const COLORS = {
   "1": 'blue',
   "-1": 'yellow'
 }
+const replayButton = document.getElementById('Replay-button');
 
 // 2) Define required variables used to track the state of the game
 /*----- app's state (variables) -----*/
@@ -29,6 +29,7 @@ const msgEl = document.querySelector("h2");
 
 /*----- event listeners -----*/
 document.getElementById('markers').addEventListener('click', handleDrop);
+replayButton.addEventListener('click', init);
 
 /*----- functions -----*/
 init();
@@ -175,9 +176,9 @@ function checkWin(colIdx, rowIdx) {
       checkLeftDiagWin(colIdx, rowIdx)||
       (board.flat().includes(0) ?null : 'T');
 };
-// 6) Handle a player clicking the replay button
-//[user should press "refresh" button on browser to replay game]
 
+// 6) Handle a player clicking the replay button
+//
 
 
 
