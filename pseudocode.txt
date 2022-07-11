@@ -16,7 +16,7 @@
 4) Upon loading the app should:
 	4.1) Initialize the state variables.
 	4.2) Render those values to the page.
-	4.3) Wait for the user to click a mar.ker
+	4.3) Wait for the user to click a marker.
 
 5) Handle a player clicking a marker
     5.1) Obtain the column and row of where the player placed their virtual chip.
