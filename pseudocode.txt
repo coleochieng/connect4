@@ -1,11 +1,14 @@
-1) Define required constants
+1) Required constants
+    1.1) Define a colors object with 3 key-value pairs that represent an empty space, player 1, and player -1.
 
 2) State variables used to track the state of the game
-    2.1)
-    2.2)
-    2.3)
+    2.1) Use a board array to represent the board for the game Connect Four.
+    2.2) Use a turn variable to track whose turn it is.
+    2.3) Use a winner variable to represent the player that won. This will also determine ties or a current game. 
+    2.4) Use a player variable to track which user should play or which user won.
+    2.5) Use idx1 and idx2 variables to track spaces on the board.
 
-3) Stored elements
+3) Stored/Cached elements
     3.1) Store 6 marker elements so the player's column choice is up-to-date.
     3.2) Store message element to show players whose turn it is and the winner.
 
