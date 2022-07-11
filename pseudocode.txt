@@ -4,19 +4,25 @@
 2) State variables used to track the state of the game
     2.1) Use a board array to represent the board for the game Connect Four.
     2.2) Use a turn variable to track whose turn it is.
-    2.3) Use a winner variable to represent the player that won. This will also determine ties or a current game. 
+    2.3) Use a winner variable to represent the player that won. This will also determine ties or an ongoing game. 
     2.4) Use a player variable to track which user should play or which user won.
     2.5) Use idx1 and idx2 variables to track spaces on the board.
 
 3) Stored/Cached elements
     3.1) Store 6 marker elements so the player's column choice is up-to-date.
-    3.2) Store message element to show players whose turn it is and the winner.
+    3.2) Store message element to show users whose turn it is in the secondary header.
 
 4) Upon loading the app should:
-	4.1) Initialize the state variables
-	4.2) Render those values to the page
-	4.3) Wait for the user to click a marker
+	4.1) Initialize the state variables.
+	4.2) Render those values to the page.
+	4.3) Wait for the user to click a mar.ker
 
-5) Handle a player clicking a square
+5) Handle a player clicking a marker
+    5.1) Obtain the column and row of where the player placed their virtual chip.
+    5.2) Change turns by multiplying turn variable by -1.
+    5.3) Keep track of chips and use a function that looks for 4 consective chips in any direction.
+        5.3.1) If there are 4 consective chips, display which player won.
+        5.3.1) If the board is full, display that there is a tie.
 
 6) Handle a player clicking the replay button
+    6.1) Repeat steps steps 4.1 through 4.3
