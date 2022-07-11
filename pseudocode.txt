@@ -1,0 +1,19 @@
+1) Define required constants
+
+2) State variables used to track the state of the game
+    2.1)
+    2.2)
+    2.3)
+
+3) Stored elements
+    3.1) Store 6 marker elements so the player's column choice is up-to-date.
+    3.2) Store message element to show players whose turn it is and the winner.
+
+4) Upon loading the app should:
+	4.1) Initialize the state variables
+	4.2) Render those values to the page
+	4.3) Wait for the user to click a marker
+
+5) Handle a player clicking a square
+
+6) Handle a player clicking the replay button
