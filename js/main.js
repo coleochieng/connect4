@@ -47,9 +47,11 @@ function init() {
    [0, 0, 0, 0, 0, 0], // column 6
  ]; 
  turn = 1;
+ winner = 0;
  render();
  renderMarkers(); 
 }
+
 
 //hide/show the markers; hide if no 0's exist in the column
 function renderMarkers() {
